@@ -9,12 +9,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MyBaseAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater inflater;
-    private String[] data;
+    private ArrayList<String> data;
 
-    public MyBaseAdapter(Context context, String[] data) {
+    public MyBaseAdapter(Context context, ArrayList<String> data) {
         this.mContext =  context;
         this.inflater = LayoutInflater.from(context);
         this.data = data;
@@ -22,7 +24,7 @@ public class MyBaseAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return this.data.length;
+        return this.data.size();
     }
 
     @Override
@@ -46,13 +48,13 @@ public class MyBaseAdapter extends BaseAdapter {
             convertView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(MyBaseAdapter.this.mContext, data[position],Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyBaseAdapter.this.mContext, data.get(position),Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.text.setText(this.data[position]);
+        holder.text.setText(this.data.get(position));
         return convertView;
     }
 
