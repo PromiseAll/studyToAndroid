@@ -46,12 +46,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.button1:
                 this.transaction = manager.beginTransaction();
+                this.transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 this.transaction.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_right_out, R.anim.slide_right_in, R.anim.slide_left_out);
                 this.transaction.replace(R.id.fragmentBox, this.fragment1).commit();
                 break;
             case R.id.button2:
                 this.transaction = manager.beginTransaction();
-                this.transaction.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_right_out, R.anim.slide_right_in, R.anim.slide_left_out);
+                this.transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                this.transaction.setCustomAnimations(R.anim.slide_right_in, R.anim.slide_left_out, R.anim.slide_left_in, R.anim.slide_right_out);
                 this.transaction.replace(R.id.fragmentBox, this.fragment2).commit();
                 break;
             default:
